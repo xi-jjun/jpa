@@ -1,6 +1,7 @@
 package hellojpa.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -18,9 +19,23 @@ import javax.persistence.Id;
  */
 @Entity // JPA 가 관리하는 class 임을 알려주는 역할
 @Getter @Setter
+@NoArgsConstructor // JPA 는 내부적으로 Reflection 을 쓰기 때문에 동적으로 객체를 생성해내야 한다. 따라서 기본 생성자가 하나 필요하다. https://wbluke.tistory.com/6
 public class Member {
 	@Id
 	private Long idx;
 
 	private String username;
+
+	public Member(Long idx, String username) {
+		this.idx = idx;
+		this.username = username;
+	}
+
+	@Override
+	public String toString() {
+		return "Member{" +
+				"idx=" + idx +
+				", username='" + username + '\'' +
+				'}';
+	}
 }
