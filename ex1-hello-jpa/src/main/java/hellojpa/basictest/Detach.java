@@ -1,4 +1,4 @@
-package hellojpa;
+package hellojpa.basictest;
 
 import hellojpa.domain.Member;
 import org.hibernate.Hibernate;
