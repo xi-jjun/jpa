@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @AllArgsConstructor
@@ -20,6 +22,12 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
+	private String username;
 	private String password;
+	private String baekJoonId;
+	private int refreshCount;
+
+	@OneToOne
+	@JoinColumn(name = "setting_id")
+	private Setting setting;
 }

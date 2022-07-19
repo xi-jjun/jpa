@@ -27,7 +27,7 @@ class UserRepositoryTest {
 		final String[] NAMES = {"kjj", "hsj"};
 		for (int i = 0; i < 2; i++) {
 			User user = User.builder()
-					.name(NAMES[i])
+					.username(NAMES[i])
 					.password("1" + i)
 					.build();
 
@@ -38,16 +38,16 @@ class UserRepositoryTest {
 	@Test
 	void findByName() {
 		final String NAME = "kjj";
-		User findUser = userRepository.findByName(NAME);
+		User findUser = userRepository.findByUsername(NAME);
 		assertThat(findUser).isNotNull();
 
-		System.out.println("findUser.getName() = " + findUser.getName());
+		System.out.println("findUser.getName() = " + findUser.getUsername());
 	}
 
 	@Test
 	void findByNameButNotExisted() {
 		final String NOT_EXISTED_NAME = "pqwqwqw";
-		User user = userRepository.findByName(NOT_EXISTED_NAME);
+		User user = userRepository.findByUsername(NOT_EXISTED_NAME);
 		
 		System.out.println("user = " + user);
 		assertThat(user).isNull();

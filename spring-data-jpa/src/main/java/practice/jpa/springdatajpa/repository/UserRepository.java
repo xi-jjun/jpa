@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import practice.jpa.springdatajpa.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByName(String name);
+	User findByUsername(String username);
 }
